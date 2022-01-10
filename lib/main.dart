@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(Wabarae());
 
@@ -26,9 +27,18 @@ class WabaraeState extends State<Wabarae> {
 
   // List of questions to be called each time a button is pressed
   var questions = [
-    "What is your consumption target?",
-    "How often do you want to hydrate?",
-    "Is the stop date tentative?"
+    {
+      'questionText': "What is your consumption target?",
+      'questionAnswers': ['2 Ltrs', '4 Ltrs', '6 Ltrs']
+    },
+    {
+      'questionText': "How often do you want to hydrate?",
+      'questionAnswers': ['Every 1 Hrs', 'Every 2 Hrs', 'Every 3 Hrs']
+    },
+    {
+      'questionText': "Is the stop date tentative?",
+      'questionAnswers': ['Yes', 'No', 'I don\'t know']
+    }
   ];
 
   @override
@@ -40,10 +50,10 @@ class WabaraeState extends State<Wabarae> {
         ),
         body: Column(
           children: [
-            Question(questions[questionIndex]),
-            ElevatedButton(child: Text("Answer 1"), onPressed: answerQuestion),
-            ElevatedButton(child: Text("Answer 2"), onPressed: answerQuestion),
-            ElevatedButton(child: Text("Answer 3"), onPressed: answerQuestion),
+            Question(questions[questionIndex]['questionText']),
+            Answer(answerQuestion),
+            Answer(answerQuestion),
+            Answer(answerQuestion),
           ],
         ),
       ),
